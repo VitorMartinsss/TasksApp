@@ -35,6 +35,17 @@ export default function Tasks() {
     setShowCompleted(!showCompleted);
   };
 
+  const colorBorderLeft = (situation) => {
+
+    console.log(situation)
+    if (situation === 'Aberta') {
+       return "green"
+      }
+    else { 
+      return "#0088ff"
+    }
+  }
+
   const renderTaskItem = ({ item, index }) => {
     if (
       (showCompleted && item.status !== "Concluída") ||
@@ -53,13 +64,13 @@ export default function Tasks() {
 
     return (
       <TouchableOpacity
-        style={[styles.taskItem, itemStyle]}
+        style={[styles.taskItem, itemStyle, { borderLeftColor: colorBorderLeft(item.status)}] }
         onPress={() => navigation.navigate("Task", { task: item })}
       >
-        <Text style={styles.taskText}>{item.openedDate}</Text>
-        <Text style={[styles.taskText, styles.taskTitle]}>{item.title}</Text>
+        <Text style={styles.taskText}>Data:{item.openedDate}</Text>
+        <Text style={[styles.taskText,styles.taskTitle]}>Assunto:{item.title}</Text>
         <Text style={styles.taskText}>Prazo: {item.deadline}</Text>
-        <Text style={styles.taskText}>{item.status}</Text>
+        <Text style={[styles.taskText]}>Situação: {item.status}</Text>
       </TouchableOpacity>
     );
   };

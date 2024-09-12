@@ -24,10 +24,11 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   taskItem: {
+    borderLeftWidth: 5,
     backgroundColor: "#f0f0f0",
     padding: 15,
     borderRadius: 8,
-    width: (windowWidth - 60) / 2,
+    width: "100%",
     alignItems: "flex-start",
   },
   taskText: {
